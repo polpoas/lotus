@@ -24,13 +24,13 @@ async def start_handler(message: Message):
 
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="👉 Далее", callback_data="captcha")]
+            [InlineKeyboardButton(text="👉 Continue", callback_data="captcha")]
         ]
     )
 
     await message.answer_photo(
         photo,
-        caption="🌸 Вас приветствует Цветочный | VCC & BA",
+        caption="🌸 Welcome to Lotus | VCC & BA",
         reply_markup=keyboard
     )
 
@@ -43,7 +43,7 @@ async def ask_captcha(callback_query: CallbackQuery):
     captcha_answers[user_id] = answer
 
     await callback_query.message.answer(
-        f"Подтвердите, что вы человек: сколько будет {num1} + {num2}?"
+        f"Confirm you're human: how much is {num1} + {num2}?"
     )
     await callback_query.answer()
 
@@ -51,7 +51,7 @@ async def ask_captcha(callback_query: CallbackQuery):
 async def captcha_check(message: Message):
     user_id = message.from_user.id
     if user_id not in captcha_answers:
-        await message.answer("Сначала введите /start.")
+        await message.answer("First, enter /start.")
         return
 
     try:
@@ -61,7 +61,7 @@ async def captcha_check(message: Message):
 
             keyboard = InlineKeyboardMarkup(inline_keyboard=[
                 [InlineKeyboardButton(
-                    text="🌸 Цветочный | VCC & BA",
+                    text="🌸 Lotus | VCC & BA",
                     url="https://t.me/+0j1ZYHB7E_g4YzJi"
                 )]
             ])
@@ -72,17 +72,17 @@ async def captcha_check(message: Message):
             await message.answer_photo(
                 photo,
                 caption=(
-                    "🎉 Рады видеть на нашем канале!\n\n"
-                    "Мы вернулись на большой рынок, приступаем к работе и готовы предоставлять для вас лучшие на рынке "
-                    "услуги по регистрации VCC & BA!\n\n"
-                    "Переходите на канал и найдите для себя решение своих задач!"
+                    "🎉 Glad to see you on our channel!\n\n"  
+                    "We are back in the big market, starting work and ready to provide you with the best on the market "  
+                    "services for VCC & BA registration!\n\n"  
+                    "Go to the channel and find a solution for your tasks!"  
                 ),
                 reply_markup=keyboard
             )
         else:
-            await message.answer("❌ Неправильно. Попробуйте снова: /start")
+            await message.answer("❌ Wrong. Try again: /start")
     except ValueError:
-        await message.answer("Введите число, пожалуйста.")
+        await message.answer("Please enter the number.")
 
 async def main():
     await bot.delete_webhook(drop_pending_updates=True)
@@ -90,6 +90,7 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
 
 
 
