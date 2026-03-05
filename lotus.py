@@ -145,7 +145,7 @@ async def captcha_check(message: Message):
             keyboard = InlineKeyboardMarkup(inline_keyboard=[
                 [InlineKeyboardButton(
                     text="🌸 Lotus | VCC & BA",
-                    url="https://t.me/+0j1ZYHB7E_g4YzJi"
+                    url="https://t.me/+J4AyvRae4vU1OTc6"
                 )]
             ])
 
@@ -179,3 +179,4 @@ if __name__ == "__main__":
         pass
     
     asyncio.run(main())
+
